@@ -4,7 +4,7 @@ title:      这一年的大项目安排 				# 标题
 subtitle:   this year what to do    #副标题
 date:       2018-04-19 				# 时间
 author:     BY 						# 作者
-header-img: hand-3318658_1280.png 	#这篇文章标题背景图片
+header-img: img/hand-3318658_1280.png 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - 07S:Self-management
