@@ -3,7 +3,7 @@ layout:     post   				    # 使用的布局（不需要改）
 title:      大项目宏观安排 		  # 标题 
 subtitle:   this year what to do    #副标题
 date:       2018-04-19 				# 时间
-author:     BY 						# 作者
+author:     Molly 						# 作者
 header-img: img/hand-3318658_1280.png 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
