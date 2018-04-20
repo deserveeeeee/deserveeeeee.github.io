@@ -4,7 +4,7 @@ title:      英文学习文章合集 				# 标题
 subtitle:   English-collection   #副标题
 date:       2018-04-20 				# 时间
 author:     Molly 						# 作者
-header-img: img/English.jpg 	#这篇文章标题背景图片
+header-img: img/english.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - 08Y
