@@ -20,7 +20,7 @@ tags:								#标签
 卡片示范：
 
 - 人名：丹尼尔.T.威廉厄姆（**Daniel T. Willingham**，	1961年－）
-![Daniel-Willingham](/assets/Daniel-Willingham.jpg)![](assets/2018-4-21开智正典卡片-《为什么学生不喜欢上学》chapter 3-054c4b3f.jpg)
+![Daniel-Willingham](/assets/Daniel-Willingham_xv9iignc0.jpg)![](https://i.loli.net/2018/04/22/5adb6b38eea2a.jpg)
 - 印象：致力于认知心理学和神经科学在K12教育中的应用。
 
 - 例子：比如这本《为什么学生不喜欢上学》就是站在一个学术界给实用教学界的书籍，因此书中就会讨论了很多关于教学方面的细节。对于成人自学，可以学到相关的科学研究高阶模型，但实际应用的时候可以不用死搬硬套。   
