@@ -7,7 +7,7 @@ author:     Molly 						# 作者
 header-img: img/English.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
-    - 08y
+    - 08Y
 ---
 # 2018-4-21：
 In his book, "Why Don't Students Like School?" he provides nine fundamental principles**_than_** can effectively be applied to classroom use by teachers in an effort to help them understand how students' minds work, and to show how to use that knowledge to be a better teacher.
