@@ -2,7 +2,7 @@
 layout:     post   				    # 使用的布局（不需要改）
 title:      英文训练综述 				# 标题
 subtitle:   how to improve my English #副标题
-date:       2018-04-20 				# 时间
+date:       2018-04-27 				# 时间
 author:     Molly 						# 作者
 header-img: img/English.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
