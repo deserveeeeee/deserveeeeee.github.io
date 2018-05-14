@@ -1,3 +1,16 @@
+---
+layout:     post   				    # 使用的布局（不需要改）
+title:      How to think straight about psychology 				# 标题
+subtitle:   How to think straight about psychology #副标题
+date:       2018-05-14 				# 时间
+author:     Molly 						# 作者
+header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
+catalog: true 						# 是否归档
+tags:								#标签
+    - 开智正典卡片
+---
+
+
 其实关于这本书我已经有写过卡片了，但是觉得信息分析的课程和它很有联系，觉得还是想再阅读一次。
 阳老的文章：[古典教育与未来教育](https://www.yangzhiping.com/psy/Classical-education-and-Future-education.html)
 阳老说这本书撬开了他对于心理学思维方式的认知。其实在某种意义上来看，心理学的思维方式应该是可以串接其他多元思维方式的一个模块。
