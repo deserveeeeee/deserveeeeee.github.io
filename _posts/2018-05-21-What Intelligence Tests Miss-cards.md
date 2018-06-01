@@ -4,7 +4,7 @@ title:      超越智商卡片 				# 标题
 subtitle:   What Intelligence Tests Miss-cards #副标题
 date:       2018-05-21 				# 时间
 author:     Molly 						# 作者
-header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
+header-img: img/intelligence.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - 开智正典系列

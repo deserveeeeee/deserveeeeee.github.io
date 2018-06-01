@@ -4,7 +4,7 @@ title:      How to think straight about psychology 				# 标题
 subtitle:   How to think straight about psychology #副标题
 date:       2018-05-14 				# 时间
 author:     Molly 						# 作者
-header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
+header-img: img/psychology.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - 开智正典系列
@@ -19,7 +19,7 @@ tags:								#标签
 
 下面是来自于阳志平老师这篇文章里面的一张总结图片：
 
-![](https://i.loli.net/2018/05/14/5af9938bee50a.jpeg)
+![](https://i.loli.net/2018/05/14/5af9938bee50a.jpeg)[该图原地址：https://www.yangzhiping.com/psy/Classical-education-and-Future-education.html]
 
 这样去看待《这才是心理学》这本书，斯坦诺维奇正是从这种角度出发去写的这本书。而我觉得我也有责任从这个角度去阅读这本书。
 

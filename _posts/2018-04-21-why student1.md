@@ -4,7 +4,7 @@ title:      《为什么学生不喜欢上学》chapter 3 				# 标题
 subtitle:   2018-4-21-开智正典卡片 #副标题
 date:       2018-04-21 				# 时间
 author:     Molly 						# 作者
-header-img: img/cards.jpg 	#这篇文章标题背景图片
+header-img: img/school.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - 开智正典系列
