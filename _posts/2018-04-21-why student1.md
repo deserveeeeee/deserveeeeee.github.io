@@ -7,7 +7,7 @@ author:     Molly 						# 作者
 header-img: img/cards.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
-    - 开智正典卡片
+    - 开智正典系列
 ---
 之前写了一篇关于深度学习的文章，所以便对“记忆”产生了兴趣。这周便选取了这本书来写卡片。
 

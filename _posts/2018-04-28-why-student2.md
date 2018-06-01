@@ -7,7 +7,7 @@ author:     Molly 						# 作者
 header-img: img/cards.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
-    - 开智正典卡片
+    - 开智正典系列
 ---
 
 chapter 01
@@ -59,7 +59,7 @@ chapter 01
 
   此处自行发挥
   还有什么想说的？
-  
+
   ● 卡片示范
    卡片输出复盘：
 
