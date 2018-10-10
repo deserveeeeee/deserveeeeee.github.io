@@ -1,13 +1,13 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      计算器的功能实现 				# 标题
-subtitle:   calculate #副标题
+subtitle:   Calculate #副标题
 date:       2018-09-28 				# 时间
 author:     Molly 						# 作者
 header-img: img/calculator.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
-    - code-learning
+    - FrontWeb
 ---
 刚拿到这个小任务的时候超级开心，觉得能够作出一个可以使用的工具是一件非常不错的事情。
 

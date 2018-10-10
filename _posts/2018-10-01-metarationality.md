@@ -1,7 +1,7 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      理性的理性——元理性 				# 标题
-subtitle:   metarationality #副标题
+subtitle:   Metarationality #副标题
 date:       2018-10-01 				# 时间
 author:     Molly 						# 作者
 header-img: img/metarationality.jpg 	#这篇文章标题背景图片
