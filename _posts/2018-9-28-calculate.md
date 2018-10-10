@@ -1,7 +1,7 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      计算器的功能实现 				# 标题
-subtitle:   calculate #副标题
+subtitle:   Calculate #副标题
 date:       2018-09-28 				# 时间
 author:     Molly 						# 作者
 header-img: img/calculator.jpg 	#这篇文章标题背景图片
