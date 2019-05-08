@@ -1,6 +1,6 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
-title:      手把手教你使用GitHub API备份仓库issues				# 标题
+title:      curl常用命令				# 标题
 subtitle:   HowToUseGitHubAPI #副标题
 date:       2019-04-30 				# 时间
 author:     Molly 						# 作者
