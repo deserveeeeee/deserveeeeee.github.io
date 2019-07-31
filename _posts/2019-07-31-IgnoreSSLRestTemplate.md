@@ -10,11 +10,16 @@ tags:								#标签
     - 12Code:tool
 ---
 
-/*
+
+
+    /*
      * Create a RestTemplate bean, using the RestTemplateBuilder
      * with trust all SSL certificates and SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
      * replaced for new apache httpclient to NoopHostnameVerifier.INSTANCE
      */
+     
+     
+     
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) throws NoSuchAlgorithmException, KeyManagementException {
 
