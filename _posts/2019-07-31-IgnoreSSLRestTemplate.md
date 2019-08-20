@@ -17,9 +17,9 @@ tags:								#标签
      * with trust all SSL certificates and SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
      * replaced for new apache httpclient to NoopHostnameVerifier.INSTANCE
      */
-     
-     
-     
+
+
+
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) throws NoSuchAlgorithmException, KeyManagementException {
 
@@ -62,5 +62,17 @@ tags:								#标签
         /*
          * Create a RestTemplate that uses custom request factory
          */
-        return builder.requestFactory(customRequestFactory).build();
+         RestTemplate restTemplate = builder.requestFactory(customRequestFactory).build();
+         //设置restTemplate编码
+         restTemplate.getMessageConverters().add(0,new StringHttpMessageConverter(Charset.forName("UTF-8")));
+
+         //处理resttemplate异常，让其能读取code和message
+         restTemplate.setErrorHandler(new ThrowErrorHandler());
+
+         List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
+
+         list.add(new UserAgentInterceptor());
+
+         restTemplate.setInterceptors(list);
+        return restTemplate;
     }
