@@ -1,0 +1,236 @@
+quartz
+maven坐标
+scheduler从工厂获取实例
+scheduler.start();
+public Myjob implements Job({
+}
+
+jobdetail
+trigger
+scheduler.scheduleJob(job,trigger);
+
+1、配置maven坐标：
+        <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+		
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+2、编写Job实现类；
+public class QuarztDemo implements Job {
+    /**
+     * 任务被触发时所执行的方法
+     * @param arg
+     * @throws JobExecutionException
+     */
+    public void execute(JobExecutionContext arg) throws JobExecutionException{
+        System.out.println(arg.getJobDetail().getJobDataMap().get("deptCode"));
+    }
+}
+3、配置Quartz配置类；
+package com.molly.easyuidemo.config;
+
+import com.molly.easyuidemo.quartz.QuarztDemo;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+
+/**
+ * quartz配置类
+ */
+@Configuration
+public class QuarzConfig {
+    /**
+     * 创建job对象
+     */
+    @Bean
+    public JobDetailFactoryBean jobDetailFactoryBean(){
+        JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
+        // 关联我们自己的Job类
+        factoryBean.setJobClass(QuarztDemo.class);
+        return factoryBean;
+    }
+    /**
+     * 创建trigger对象
+     */
+    @Bean
+    public CronTriggerFactoryBean cronTriggerFactoryBean(JobDetailFactoryBean factoryBean){
+        CronTriggerFactoryBean factory = new CronTriggerFactoryBean();
+        // 关联JobDetail对象
+        factory.setJobDetail(factoryBean.getObject());
+        // 设置触发时间
+        factory.setCronExpression("0/2 * * * * ?");
+        return factory;
+    }
+    /**
+     * 创建scheduler对象
+     */
+    @Bean
+    public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean cronTriggerFactoryBean){
+        SchedulerFactoryBean factoryBean = new SchedulerFactoryBean();
+        // 关联trigger
+        factoryBean.setTriggers(cronTriggerFactoryBean.getObject());
+        return factoryBean;
+    }
+}
+4、修改启动类：
+@EnableScheduling
+5、Job类中注入对象
+写类 MyAdaptableFactory
+import org.quartz.spi.TriggerFiredBundle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.scheduling.quartz.AdaptableJobFactory;
+import org.springframework.stereotype.Component;
+
+@Component("myAdaptableFactory")
+public class MyAdaptableFactory extends AdaptableJobFactory {
+    // 该对象是可以将一个对象注入springIOC容器中，并且完成该对象的注入
+    @Autowired
+    private AutowireCapableBeanFactory autowireCapableBeanFactory;
+    /**
+     * 该方法需要将实例化的任务对象手动地添加到springIOC容器当中
+     * 并且完成对象的注入
+     * @param bundle
+     * @return
+     * @throws Exception
+     */
+    @Override
+    protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception {
+        Object object = super.createJobInstance(bundle);
+        // 将对象object添加到Spring IOC容器中，并完成注入
+        this.autowireCapableBeanFactory.autowireBean(object);
+        return object;
+    }
+}
+6、修改QuarzConfig
+    @Bean
+    public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean cronTriggerFactoryBean,MyAdaptableFactory myAdaptableFactory){
+        SchedulerFactoryBean factoryBean = new SchedulerFactoryBean();
+        // 关联trigger
+        factoryBean.setTriggers(cronTriggerFactoryBean.getObject());
+        factoryBean.setJobFactory(myAdaptableFactory);
+        return factoryBean;
+    }
+	
+获取data
+package com.molly.easyuidemo.quartz;
+
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+
+public class QuartzMain {
+    public static void main(String[] args) throws Exception {
+        // 1.创建job对象，你要做什么事情
+        JobDetail jobDetail = JobBuilder.newJob(QuarztDemo.class)
+                                .withIdentity("job1","depeQuery")
+                                .usingJobData("DeptCode","425671")
+                                .build();
+        System.out.println("job名："+jobDetail.getKey().getName());
+        System.out.println("group名："+jobDetail.getKey().getGroup());
+        System.out.println("任务类："+jobDetail.getJobClass().getName());
+
+        // 2.创建trigger对象，在什么时间做
+        Trigger trigger = TriggerBuilder.newTrigger()
+                            .withIdentity("trigger1","depeQuery")
+                                .usingJobData("Username","wwx732560")
+                            .withSchedule(CronScheduleBuilder.cronSchedule("0/3 * * * * ?")).build();
+        // 3.创建scheduler对象：在什么时间做什么事
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        scheduler.scheduleJob(jobDetail,trigger);
+        // 4.启动
+        scheduler.start();
+    }
+}
+
+
+package com.molly.easyuidemo.quartz;
+
+import com.molly.easyuidemo.Service.QuartzService;
+import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
+
+/**
+ * 定义任务类
+ */
+public class QuarztDemo implements Job {
+    @Autowired
+    private QuartzService quartzService;
+    /**
+     * 任务被触发时所执行的方法
+     * @param context
+     * @throws JobExecutionException
+     */
+    public void execute(JobExecutionContext context) throws JobExecutionException{
+//        System.out.println(arg.getJobDetail().getJobDataMap().get("deptCode"));
+        System.out.println("Execute...."+new Date());
+        quartzService.run("123");
+        // 获取JobDetail的内容
+        JobKey jobKey = context.getJobDetail().getKey();
+        // 工作任务名称
+        System.out.println(jobKey.getName());
+        // 工作任务的组
+        System.out.println(jobKey.getGroup());
+        // 任务类名称
+        System.out.println(context.getJobDetail().getJobClass().getSimpleName());
+        // JobDataMap
+        JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
+        System.out.println(jobDataMap.getString("DeptCode"));
+        JobDataMap triggerDataMap = context.getTrigger().getJobDataMap();
+        System.out.println(triggerDataMap.getString("Username"));
+    }
+}
+
+
